@@ -3,157 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrossel de Notícias</title>
+    <title>Carrossel de Eventos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
             font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f5f5f5;
         }
         .carousel-container {
-            width: 80%;
+            width: 90%;
             max-width: 800px;
-            position: relative;
+            margin: auto;
             overflow: hidden;
+            position: relative;
         }
         .carousel {
             display: flex;
-            transition: transform 0.5s ease-in-out;
-            cursor: grab;
+            transition: transform 0.3s ease-in-out;
         }
         .card {
             min-width: 100%;
-            background: white;
-            border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
             overflow: hidden;
+            background: white;
             text-align: center;
+            padding: 20px;
         }
         .card img {
             width: 100%;
             height: 200px;
             object-fit: cover;
+            border-radius: 10px;
         }
-        .card-content {
-            padding: 15px;
-        }
-        .card h3 {
+        .card h2 {
             margin: 10px 0;
+            font-size: 18px;
         }
         .card p {
             font-size: 14px;
-            color: #555;
+            color: #666;
         }
+        .nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
     </style>
 </head>
 <body>
     <div class="carousel-container">
+        <button class="nav-btn prev"><i class="fas fa-chevron-left"></i></button>
         <div class="carousel" id="carousel"></div>
+        <button class="nav-btn next"><i class="fas fa-chevron-right"></i></button>
     </div>
-
+    
     <script>
         const events = [
-            {
-                id: 1,
-                title: 'Semana da Computação e Software 2024',
-                date: '2024-12-05',
-                time: '10:00',
-                location: 'Salão de Eventos',
-                type: 'tech',
-                description: 'Uma semana inteira dedicada à tecnologia e inovação, com palestras, workshops e hackathons.',
-                image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=400'
-            },
-            {
-                id: 2,
-                title: 'Workshop de IoT',
-                date: '2024-12-01',
-                time: '08:00',
-                location: 'Laboratório CS&I',
-                type: 'tech',
-                description: 'Workshop prático sobre Internet das Coisas e suas aplicações na indústria 4.0.',
-                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=400'
-            },
-            {
-                id: 3,
-                title: 'Festa dos Alunos',
-                date: '2025-05-18',
-                time: '19:00',
-                location: 'Área Esportiva do Inatel',
-                type: 'cultural',
-                description: 'Venha comemorar os anos 2010, com a Festa dos Alunos 2025',
-                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800&h=400'
-            },
-            {
-                id: 4,
-                title: 'Feira de Oportunidades',
-                date: '2024-04-05',
-                time: '10:00',
-                location: 'Salão de Eventos - Prédio V',
-                type: 'academic',
-                description: 'Venha conhecer empresas e projetos com destaque na área da engenharia.',
-                image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800&h=400'
-            }
+            { id: 1, title: 'Semana da Computação e Software 2024', date: '2024-12-05', time: '10:00', location: 'Salão de Eventos', type: 'tech', description: 'Uma semana inteira dedicada à tecnologia e inovação, com palestras, workshops e hackathons.', image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=400' },
+            { id: 2, title: 'Workshop de IoT', date: '2024-12-01', time: '08:00', location: 'Laboratório CS&I', type: 'tech', description: 'Workshop prático sobre Internet das Coisas e suas aplicações na indústria 4.0.', image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=400' },
+            { id: 3, title: 'Festa dos Alunos', date: '2025-05-18', time: '19:00', location: 'Área Esportiva do Inatel', type: 'cultural', description: 'Venha comemorar os anos 2010, com a Festa dos Alunos 2025', image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800&h=400' },
+            { id: 4, title: 'Feira de Oportunidades', date: '2024-04-05', time: '10:00', location: 'Salão de Eventos - Prédio V', type: 'academic', description: 'Venha conhecer empresas e projetos com destaque na área da engenharia.', image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800&h=400' }
         ];
 
         const carousel = document.getElementById('carousel');
-        let startX = 0;
-        let currentTranslate = 0;
-        let prevTranslate = 0;
-        let isDragging = false;
+        let index = 0;
 
-        function renderCards() {
+        function renderCarousel() {
             carousel.innerHTML = '';
             events.forEach(event => {
                 const card = document.createElement('div');
                 card.classList.add('card');
                 card.innerHTML = `
                     <img src="${event.image}" alt="${event.title}">
-                    <div class="card-content">
-                        <h3>${event.title}</h3>
-                        <p><strong>Data:</strong> ${event.date} | <strong>Hora:</strong> ${event.time}</p>
-                        <p><strong>Local:</strong> ${event.location}</p>
-                        <p>${event.description}</p>
-                    </div>
+                    <h2>${event.title}</h2>
+                    <p><strong>Data:</strong> ${event.date} às ${event.time}</p>
+                    <p><strong>Local:</strong> ${event.location}</p>
+                    <p>${event.description}</p>
                 `;
                 carousel.appendChild(card);
             });
         }
-
-        function touchStart(e) {
-            isDragging = true;
-            startX = e.touches[0].clientX;
-            prevTranslate = currentTranslate;
+        
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
         }
 
-        function touchMove(e) {
-            if (!isDragging) return;
-            const currentX = e.touches[0].clientX;
-            const deltaX = currentX - startX;
-            currentTranslate = prevTranslate + deltaX;
-            carousel.style.transform = `translateX(${currentTranslate}px)`;
-        }
-
-        function touchEnd() {
-            isDragging = false;
-            const threshold = 50;
-            if (currentTranslate - prevTranslate < -threshold && currentTranslate > -((events.length - 1) * window.innerWidth)) {
-                prevTranslate -= window.innerWidth;
-            } else if (currentTranslate - prevTranslate > threshold && currentTranslate < 0) {
-                prevTranslate += window.innerWidth;
+        document.querySelector('.next').addEventListener('click', () => {
+            if (index < events.length - 1) {
+                index++;
+                updateCarousel();
             }
-            currentTranslate = prevTranslate;
-            carousel.style.transition = 'transform 0.3s ease-in-out';
-            carousel.style.transform = `translateX(${currentTranslate}px)`;
-        }
+        });
 
-        carousel.addEventListener('touchstart', touchStart);
-        carousel.addEventListener('touchmove', touchMove);
-        carousel.addEventListener('touchend', touchEnd);
+        document.querySelector('.prev').addEventListener('click', () => {
+            if (index > 0) {
+                index--;
+                updateCarousel();
+            }
+        });
 
-        renderCards();
+        let startX;
+        carousel.addEventListener('touchstart', (e) => startX = e.touches[0].clientX);
+        carousel.addEventListener('touchend', (e) => {
+            let endX = e.changedTouches[0].clientX;
+            if (startX - endX > 50 && index < events.length - 1) index++;
+            if (startX - endX < -50 && index > 0) index--;
+            updateCarousel();
+        });
+
+        renderCarousel();
     </script>
 </body>
 </html>
