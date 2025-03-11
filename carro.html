@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrossel de Notícias</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .carousel-container {
+            width: 80%;
+            max-width: 800px;
+            position: relative;
+            overflow: hidden;
+        }
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .card {
+            min-width: 100%;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            text-align: center;
+        }
+        .card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card h3 {
+            margin: 10px 0;
+        }
+        .card p {
+            font-size: 14px;
+            color: #555;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel-container">
+        <button class="carousel-btn prev">&#10094;</button>
+        <div class="carousel" id="carousel"></div>
+        <button class="carousel-btn next">&#10095;</button>
+    </div>
+
+    <script>
+        const events = [
+            {
+                id: 1,
+                title: 'Semana da Computação e Software 2024',
+                date: '2024-12-05',
+                time: '10:00',
+                location: 'Salão de Eventos',
+                type: 'tech',
+                description: 'Uma semana inteira dedicada à tecnologia e inovação, com palestras, workshops e hackathons.',
+                image: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&q=80&w=800&h=400'
+            },
+            {
+                id: 2,
+                title: 'Workshop de IoT',
+                date: '2024-12-01',
+                time: '08:00',
+                location: 'Laboratório CS&I',
+                type: 'tech',
+                description: 'Workshop prático sobre Internet das Coisas e suas aplicações na indústria 4.0.',
+                image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=800&h=400'
+            },
+            {
+                id: 3,
+                title: 'Festa dos Alunos',
+                date: '2025-05-18',
+                time: '19:00',
+                location: 'Área Esportiva do Inatel',
+                type: 'cultural',
+                description: 'Venha comemorar os anos 2010, com a Festa dos Alunos 2025',
+                image: 'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=800&h=400'
+            },
+            {
+                id: 4,
+                title: 'Feira de Oportunidades',
+                date: '2024-04-05',
+                time: '10:00',
+                location: 'Salão de Eventos - Prédio V',
+                type: 'academic',
+                description: 'Venha conhecer empresas e projetos com destaque na área da engenharia.',
+                image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=800&h=400'
+            }
+        ];
+
+        const carousel = document.getElementById('carousel');
+        let index = 0;
+
+        function renderCards() {
+            carousel.innerHTML = '';
+            events.forEach(event => {
+                const card = document.createElement('div');
+                card.classList.add('card');
+                card.innerHTML = `
+                    <img src="${event.image}" alt="${event.title}">
+                    <div class="card-content">
+                        <h3>${event.title}</h3>
+                        <p><strong>Data:</strong> ${event.date} | <strong>Hora:</strong> ${event.time}</p>
+                        <p><strong>Local:</strong> ${event.location}</p>
+                        <p>${event.description}</p>
+                    </div>
+                `;
+                carousel.appendChild(card);
+            });
+        }
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${index * 100}%)`;
+        }
+
+        document.querySelector('.prev').addEventListener('click', () => {
+            index = (index > 0) ? index - 1 : events.length - 1;
+            updateCarousel();
+        });
+
+        document.querySelector('.next').addEventListener('click', () => {
+            index = (index < events.length - 1) ? index + 1 : 0;
+            updateCarousel();
+        });
+
+        renderCards();
+    </script>
+</body>
+</html>
