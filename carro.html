@@ -22,6 +22,7 @@
         .carousel {
             display: flex;
             transition: transform 0.5s ease-in-out;
+            cursor: grab;
         }
         .card {
             min-width: 100%;
@@ -46,29 +47,11 @@
             font-size: 14px;
             color: #555;
         }
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }
-        .prev {
-            left: 10px;
-        }
-        .next {
-            right: 10px;
-        }
     </style>
 </head>
 <body>
     <div class="carousel-container">
-        <button class="carousel-btn prev">&#10094;</button>
         <div class="carousel" id="carousel"></div>
-        <button class="carousel-btn next">&#10095;</button>
     </div>
 
     <script>
@@ -116,7 +99,10 @@
         ];
 
         const carousel = document.getElementById('carousel');
-        let index = 0;
+        let startX = 0;
+        let currentTranslate = 0;
+        let prevTranslate = 0;
+        let isDragging = false;
 
         function renderCards() {
             carousel.innerHTML = '';
@@ -136,19 +122,36 @@
             });
         }
 
-        function updateCarousel() {
-            carousel.style.transform = `translateX(-${index * 100}%)`;
+        function touchStart(e) {
+            isDragging = true;
+            startX = e.touches[0].clientX;
+            prevTranslate = currentTranslate;
         }
 
-        document.querySelector('.prev').addEventListener('click', () => {
-            index = (index > 0) ? index - 1 : events.length - 1;
-            updateCarousel();
-        });
+        function touchMove(e) {
+            if (!isDragging) return;
+            const currentX = e.touches[0].clientX;
+            const deltaX = currentX - startX;
+            currentTranslate = prevTranslate + deltaX;
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+        }
 
-        document.querySelector('.next').addEventListener('click', () => {
-            index = (index < events.length - 1) ? index + 1 : 0;
-            updateCarousel();
-        });
+        function touchEnd() {
+            isDragging = false;
+            const threshold = 50;
+            if (currentTranslate - prevTranslate < -threshold && currentTranslate > -((events.length - 1) * window.innerWidth)) {
+                prevTranslate -= window.innerWidth;
+            } else if (currentTranslate - prevTranslate > threshold && currentTranslate < 0) {
+                prevTranslate += window.innerWidth;
+            }
+            currentTranslate = prevTranslate;
+            carousel.style.transition = 'transform 0.3s ease-in-out';
+            carousel.style.transform = `translateX(${currentTranslate}px)`;
+        }
+
+        carousel.addEventListener('touchstart', touchStart);
+        carousel.addEventListener('touchmove', touchMove);
+        carousel.addEventListener('touchend', touchEnd);
 
         renderCards();
     </script>
