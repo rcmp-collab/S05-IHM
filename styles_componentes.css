@@ -186,7 +186,7 @@ font-family: "Arimo", sans-serif;
 font-optical-sizing: auto;
 font-weight: <weight>;
 font-style: normal;
-font-size: 11px;
+font-size: 13px;
 color: var(--cor-text);
 line-height: 1.5;
 orphans: 3;
@@ -314,7 +314,7 @@ font-family: "Arimo", sans-serif;
 font-optical-sizing: auto;
 font-weight: <weight>;
 font-style: normal;
-font-size: 11px;
+font-size: 13px;
 color: white;
 
 white-space: nowrap;
