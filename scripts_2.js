@@ -41,6 +41,8 @@ function temaDark() {
 }
 
 
+
+
 const eventos = [
     {
         id: 1,
@@ -138,4 +140,4 @@ carousel.addEventListener('touchend', (e) => {
 });
 
 // Inicializando
-createCards();  
+createCards();
