@@ -1,61 +1,40 @@
-// Definição de uma nova classe que estende HTMLElement, criando um componente personalizado
 class AulasComponent extends HTMLElement {
   constructor() {
-    super(); // Chama o construtor da classe pai (HTMLElement)
-
-    // Cria um Shadow DOM para encapsular o estilo e o conteúdo do componente
-    this.attachShadow({ mode: 'open' }); // 'open' permite acesso externo via this.shadowRoot
-
-    // Define o dia atual como "ter" (terça-feira, provavelmente). Pode ser modificado para dinamismo
-    this.hoje = "ter";
-
-    //Tornar o valor de this.hoje dinâmico, pegando o dia da semana automaticamente:
-    //const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
-    //this.hoje = dias[new Date().getDay()];
+    super();
+    this.attachShadow({ mode: 'open' }); // Cria o Shadow DOM
+    this.hoje = "ter"; // Dia atual
   }
 
-  // Método de ciclo de vida do Web Component chamado automaticamente quando o elemento é adicionado ao DOM
   connectedCallback() {
-    this.loadData(); // Ao ser inserido na página, o componente carrega os dados das aulas
+    this.loadData(); // Carregar dados externos quando o componente for adicionado ao DOM
   }
 
-  // Método assíncrono para carregar o arquivo JSON contendo os dados das aulas
+  // Método para carregar dados das aulas a partir do arquivo JSON
   async loadData() {
     try {
-      // Busca o arquivo aulas.json na mesma pasta
-      const response = await fetch('aulas.json');
-
-      // Converte o conteúdo da resposta para objeto JSON
-      const aulas = await response.json();
-
-      // Chama o método render para desenhar os dados no componente
-      this.render(aulas);
+      const response = await fetch('aulas.json'); // Carregar os dados do arquivo JSON
+      const aulas = await response.json(); // Converter para formato JSON
+      this.render(aulas); // Passar os dados para o método render
     } catch (error) {
-      // Caso ocorra algum erro na leitura ou conversão do arquivo, exibe no console
       console.error('Erro ao carregar os dados das aulas:', error);
     }
   }
 
-  // Método responsável por renderizar o conteúdo dentro do Shadow DOM
+  // Método para renderizar o conteúdo do componente
   render(aulas) {
-    // Filtra as aulas para exibir apenas as que correspondem ao dia armazenado em 'this.hoje'
-    const aulasDia = aulas.filter(a => a.data === this.hoje);
+    const aulasDia = aulas.filter(a => a.data === this.hoje); // Filtra as aulas para o dia de hoje
 
-    // Cria e adiciona um link para o arquivo de estilos CSS externo
+    // Carregar a folha de estilos externa
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = 'estilos.css'; // Aponta para o arquivo de estilos
-    this.shadowRoot.appendChild(link); // Adiciona o CSS ao Shadow DOM
+    link.href = 'estilos.css'; // Caminho para o arquivo CSS externo
+    this.shadowRoot.appendChild(link); // Adiciona o link ao Shadow DOM
 
-
-    // Constrói o conteúdo HTML dinamicamente baseado nas aulas do dia
+    // Criar o conteúdo do componente
     this.shadowRoot.innerHTML += `
       <div>
         ${aulasDia.map(a => {
-          // Se não houver alerta de prova, oculta o bloco de prova
           let provaDisplay = a.prova_alert ? '' : 'display: none;';
-          
-          // Gera o bloco HTML para cada aula
           return `
             <div class="comp-aula">
               <div class="lable-prova p_lable" style="${provaDisplay}">PROVA: <b>${a.prova}</b></div>
@@ -67,13 +46,11 @@ class AulasComponent extends HTMLElement {
               </div>
             </div>
           `;
-        }).join('')} <!-- Junta todos os blocos HTML em uma única string -->
+        }).join('')}
       </div>
     `;
   }
 }
 
-
-// Registra o componente personalizado com o nome 'aulas-component'
-// Com isso, a tag <aulas-component></aulas-component> já pode ser usada no HTML
+// Registrando o componente
 customElements.define('aulas-component', AulasComponent);
