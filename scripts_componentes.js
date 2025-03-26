@@ -2,7 +2,9 @@ class AulasComponent extends HTMLElement {
     constructor() {
       super();
       this.attachShadow({ mode: 'open' }); // Cria o Shadow DOM
-      this.hoje = "ter"; // Dia atual
+      //this.hoje = "ter"; // Dia atual
+      const dias = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+      this.hoje = dias[new Date().getDay()];
     }
   
     connectedCallback() {
