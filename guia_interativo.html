@@ -1,0 +1,310 @@
+<html>
+<title>HTML, CSS e JavaScript</title>
+<style>
+    h2 {
+        color: #004080;
+    }
+</style>
+<link rel="stylesheet" href="styles_guia.css">
+</head>
+<body>
+
+<header>
+    <h1>Lista de Exercícios - HTML, CSS e JavaScript</h1>
+    <p>Exercícios práticos intercalados com explicações de conceitos.</p>
+</header>
+
+<!-- Tópico 1 -->
+<section>
+    <h2>1. Declarações</h2>
+    <p>Uma declaração é uma instrução que o JavaScript executa. Exemplo: <code>let x = 5;</code>.</p>
+    <pre>
+let mensagem = "Olá mundo!";
+document.getElementById("saida").innerHTML = mensagem;
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Crie uma declaração que mostre seu nome e idade.</p>
+        <button onclick="exec1()">Executar Exercício</button>
+        <div id="resultado1" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 2 -->
+<section>
+    <h2>2. Comentários</h2>
+    <p>Comentários explicam o código e não são executados. Use <code>//</code> para uma linha e <code>/* */</code> para múltiplas linhas.</p>
+    <pre>
+// Este é um comentário
+/* Este é um
+   comentário de várias linhas */
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Mostre uma frase no HTML e inclua um comentário no código.</p>
+        <button onclick="exec2()">Executar Exercício</button>
+        <div id="resultado2" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 3 -->
+<section>
+    <h2>3. Variáveis</h2>
+    <p>Variáveis armazenam dados. Use <code>let</code>, <code>const</code> ou <code>var</code>.</p>
+    <pre>
+let nome = "Ana";
+let idade = 30;
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Declare duas variáveis e exiba seus valores.</p>
+        <button onclick="exec3()">Executar Exercício</button>
+        <div id="resultado3" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 4 -->
+<section>
+    <h2>4. Tipos de Dados</h2>
+    <p>Tipos básicos: string, number, boolean, array, object.</p>
+    <pre>
+let texto = "Olá";
+let numero = 42;
+let logico = true;
+let lista = [1,2,3];
+let objeto = {nome:"Ana", idade:30};
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Declare um de cada tipo de dado e mostre-os.</p>
+        <button onclick="exec4()">Executar Exercício</button>
+        <div id="resultado4" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 5 -->
+<section>
+    <h2>5. If Else</h2>
+    <p>Executa um bloco se a condição for verdadeira, outro se for falsa.</p>
+    <pre>
+if (condicao) {
+    // verdadeiro
+} else {
+    // falso
+}
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Pergunte a idade e mostre se é maior ou menor de idade.</p>
+        <button onclick="exec5()">Executar Exercício</button>
+        <div id="resultado5" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 6 -->
+<section>
+    <h2>6. Loop For</h2>
+    <p>Repete um bloco de código por um número definido de vezes.</p>
+    <pre>
+for (let i=0; i<5; i++) {
+    // código
+}
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Mostre os números de 1 a 5.</p>
+        <button onclick="exec6()">Executar Exercício</button>
+        <div id="resultado6" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 7 -->
+<section>
+    <h2>7. Loop While</h2>
+    <p>Repete enquanto a condição for verdadeira.</p>
+    <pre>
+while (condicao) {
+    // código
+}
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Mostre os números de 1 a 5 usando while.</p>
+        <button onclick="exec7()">Executar Exercício</button>
+        <div id="resultado7" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 8 -->
+<section>
+    <h2>8. Operadores Aritméticos</h2>
+    <p>Realizam cálculos: + - * / % **.</p>
+    <pre>
+let soma = 2 + 3;
+let potencia = 2 ** 3;
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Peça dois números e mostre soma, subtração, multiplicação e divisão.</p>
+        <button onclick="exec8()">Executar Exercício</button>
+        <div id="resultado8" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 9 -->
+<section>
+    <h2>9. Operadores de Atribuição e Incremento</h2>
+    <p>Atribuem valores e incrementam variáveis: = += -= ++ --.</p>
+    <pre>
+let x = 5;
+x += 3; // 8
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Comece com 10, incremente e decremente, mostrando o valor a cada passo.</p>
+        <button onclick="exec9()">Executar Exercício</button>
+        <div id="resultado9" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 10 -->
+<section>
+    <h2>10. Operadores de Comparação</h2>
+    <p>Comparam valores: ==, ===, !=, !==, &lt;, &gt;.</p>
+    <pre>
+5 == "5" // true
+5 === "5" // false
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Compare dois valores e mostre os resultados.</p>
+        <button onclick="exec10()">Executar Exercício</button>
+        <div id="resultado10" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 11 -->
+<section>
+    <h2>11. Functions</h2>
+    <p>Funções agrupam código reutilizável.</p>
+    <pre>
+function saudacao(nome) {
+    return "Olá " + nome;
+}
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Crie uma função que receba um nome e retorne uma saudação.</p>
+        <button onclick="exec11()">Executar Exercício</button>
+        <div id="resultado11" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 12 -->
+<section>
+    <h2>12. Objects</h2>
+    <p>Objetos armazenam dados em pares chave-valor.</p>
+    <pre>
+let pessoa = {nome:"Ana", idade:30};
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Crie um objeto representando um carro e mostre suas propriedades.</p>
+        <button onclick="exec12()">Executar Exercício</button>
+        <div id="resultado12" class="resultado"></div>
+    </div>
+</section>
+
+<!-- Tópico 13 -->
+<section>
+    <h2>13. Eventos</h2>
+    <p>Eventos reagem a ações do usuário, como cliques e teclas.</p>
+    <pre>
+elemento.addEventListener("click", funcao);
+    </pre>
+    <div class="exercise">
+        <p><strong>Exercício:</strong> Mostre uma mensagem quando o botão for clicado.</p>
+        <button id="eventoBtn">Clique aqui</button>
+        <div id="resultado13" class="resultado"></div>
+    </div>
+</section>
+
+<script>
+// 1
+function exec1(){
+    let nome = "João";
+    let idade = 25;
+    document.getElementById("resultado1").innerHTML = `Nome: ${nome}, Idade: ${idade}`;
+}
+// 2
+function exec2(){
+    // Este é um comentário
+    document.getElementById("resultado2").innerHTML = "Comentários ajudam a entender o código!";
+}
+// 3
+function exec3(){
+    let a = "Texto";
+    let b = 123;
+    document.getElementById("resultado3").innerHTML = `a = ${a}, b = ${b}`;
+}
+// 4
+function exec4(){
+    let texto = "Olá";
+    let numero = 42;
+    let logico = true;
+    let lista = [1,2,3];
+    let objeto = {nome:"Ana", idade:30};
+    document.getElementById("resultado4").innerHTML = 
+        `${texto} | ${numero} | ${logico} | ${lista} | ${objeto.nome} - ${objeto.idade}`;
+}
+// 5
+function exec5(){
+    let idade = prompt("Digite sua idade:");
+    let msg = idade >= 18 ? "Maior de idade" : "Menor de idade";
+    document.getElementById("resultado5").innerHTML = msg;
+}
+// 6
+function exec6(){
+    let out = "";
+    for(let i=1;i<=5;i++){ out += i + " "; }
+    document.getElementById("resultado6").innerHTML = out;
+}
+// 7
+function exec7(){
+    let i=1, out="";
+    while(i<=5){ out += i + " "; i++; }
+    document.getElementById("resultado7").innerHTML = out;
+}
+// 8
+function exec8(){
+    let a = Number(prompt("Digite o primeiro número:"));
+    let b = Number(prompt("Digite o segundo número:"));
+    let res = `Soma: ${a+b} <br> Subtração: ${a-b} <br> Multiplicação: ${a*b} <br> Divisão: ${(a/b).toFixed(2)}`;
+    document.getElementById("resultado8").innerHTML = res;
+}
+// 9
+function exec9(){
+    let x = 10;
+    let out = `Inicial: ${x}<br>`;
+    x++;
+    out += `Incremento: ${x}<br>`;
+    x--;
+    out += `Decremento: ${x}<br>`;
+    x += 5;
+    out += `Mais 5: ${x}`;
+    document.getElementById("resultado9").innerHTML = out;
+}
+// 10
+function exec10(){
+    let a = 5, b = "5";
+    let res = `a == b: ${a == b} <br> a === b: ${a === b} <br> a != b: ${a != b} <br> a !== b: ${a !== b}`;
+    document.getElementById("resultado10").innerHTML = res;
+}
+// 11
+function exec11(){
+    function saudacao(nome){ return "Olá " + nome; }
+    let nome = prompt("Digite seu nome:");
+    document.getElementById("resultado11").innerHTML = saudacao(nome);
+}
+// 12
+function exec12(){
+    let carro = {marca:"Toyota", modelo:"Corolla", ano:2022};
+    document.getElementById("resultado12").innerHTML = 
+        `${carro.marca} ${carro.modelo} - ${carro.ano}`;
+}
+// 13
+document.getElementById("eventoBtn").addEventListener("click", function(){
+    document.getElementById("resultado13").innerHTML = "Botão clicado!";
+});
+</script>
+
+</body>
+</html>
