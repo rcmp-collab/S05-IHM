@@ -1,26 +1,64 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#eb4034">
-    <title>Reserva de Armário</title>
-    <link rel="stylesheet" href="styles.css">
-    <script src="scripts.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Projeto inicial responsivo inspirado no GitHub Pages + Jekyll" />
+  <title>Caderno de Exemplos S05 - Interação Home Máquina</title>
+  <link rel="stylesheet" href="cadex.css" />
 </head>
 <body>
-    <div class="container">
-        <h2>Reserva de Armário</h2>
-        <label for="tipoArmario">Selecione o tipo de armário:</label>
-        <select id="tipoArmario">
-            <option value="padrao">Padrão</option>
-            <option value="duplo">Duplo</option>
-        </select>
-        <button onclick="reservarArmario()">Reservar</button>
-        <p id="resultado"></p>
+  <!-- Cabeçalho fixo -->
+  <header class="header">
+    <div class="header-inner">
+      <div class="site-title">Meu Projeto</div>
+      <nav class="nav">
+        <a href="#home">Início</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato">Contato</a>
+      </nav>
     </div>
+  </header>
+
+  <!-- Hero / destaque inicial -->
+  <section class="hero">
+    <div class="container">
+      <h1>Bem-vindo ao Meu Projeto</h1>
+      <p class="lead">Uma estrutura inicial responsiva para começar rapidamente.</p>
+      <a href="#conteudo" class="btn btn-primary">Começar</a>
+    </div>
+  </section>
+
+  <!-- Conteúdo principal -->
+  <main class="container wrapper" id="conteudo">
+    <article class="markdown-body">
+      <h2>Sobre</h2>
+      <p>Este é um exemplo de página inicial para seu projeto. O layout já é responsivo e adaptado para leitura agradável.</p>
+
+      <h3>Recursos inclusos:</h3>
+      <ul>
+        <li>Layout fluido com <code>.container</code> e <code>.wrapper</code></li>
+        <li>Componentes básicos: botões, cartões, hero</li>
+        <li>Estilo inspirado no GitHub Pages + Jekyll</li>
+      </ul>
+
+      <blockquote>
+        Você pode começar a editar este conteúdo e expandir conforme a necessidade.
+      </blockquote>
+
+      <div class="card mt-3">
+        <h3>Exemplo de cartão</h3>
+        <p>Use este componente para destacar informações importantes.</p>
+        <a href="#" class="btn">Saiba mais</a>
+      </div>
+    </article>
+  </main>
+
+  <!-- Rodapé -->
+  <footer class="footer">
+    <div class="footer-inner text-center">
+      <p class="credits">© 2025 Meu Projeto — Criado com HTML + CSS responsivo</p>
+    </div>
+  </footer>
 </body>
 </html>
