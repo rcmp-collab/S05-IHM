@@ -136,6 +136,11 @@ code, pre, kbd, samp { font-family: var(--font-mono); font-size: 0.95em; }
 .markdown-body h5 { font-size: .875em; }
 .markdown-body h6 { font-size: .85em; color: var(--fg-muted); }
 
+.cardTit {
+  margin-top: 5px !important;
+}
+
+
 .markdown-body p,
 .markdown-body ul,
 .markdown-body ol,
